@@ -2,7 +2,9 @@
 Create an easy to use, lightweight Version class that can handle basic Version needs.
 
 ## API
+
 ### Member variables
+
 #### major
 integer value to represent the major version of the Version
 #### minor
@@ -11,7 +13,9 @@ integer value to represent the minor version of the Version
 integer value to represent the build version of the Version
 #### revision
 integer value to represent the revision version of the Version
+
 ### Constructors
+
 #### Version()
 creates a Version object with major, minor, build, and revision all set to 0
 #### Version(string)

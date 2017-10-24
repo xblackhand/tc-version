@@ -17,16 +17,25 @@ creates a Version object with major, minor, build, and revision all set to 0
 #### Version(string)
 creates a Version object by splitting the string on '.' and assigning the
 major, minor, build, and revision values respectively.
-##### Acceptable string parameter formats
-<ul>
-  <li>"X.X.X.X"</li>
-  <li>"X.X.X"</li>
-  <li>"X.X"</li>
-  <li>"X"</li>
-  <li>"XrX"</li>
-  <li>"X-rX"</li>
-  <li>"X.XrX"</li>
-  <li>"X.X-rX"</li>
-  <li>"X.X.XrX"</li>
-  <li>"X.X.X-rX"</li>
-</ul>
+#####   Acceptable string parameter formats
+  <ul>
+    <li>"X.X.X.X"</li>
+    <li>"X.X.X"</li>
+    <li>"X.X"</li>
+    <li>"X"</li>
+    <li>"XrX"</li>
+    <li>"X-rX"</li>
+    <li>"X.XrX"</li>
+    <li>"X.X-rX"</li>
+    <li>"X.X.XrX"</li>
+    <li>"X.X.X-rX"</li>
+  </ul>
+  where X is an integer and r is the character 'r'
+#### Version(array)
+creates a Version object by assigning the values in the array to their
+respective version types
+#####   Acceptable array parameter must
+  <ul>
+    <li>consist of all integer values</li>
+    <li>have a size of 4 or less</li>
+  </ul>

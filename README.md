@@ -18,7 +18,6 @@ creates a Version object with major, minor, build, and revision all set to 0
 creates a Version object by splitting the string on '.' and assigning the
 major, minor, build, and revision values respectively.
 #####   Acceptable string parameter formats
-  <ul>
     <li>"X.X.X.X"</li>
     <li>"X.X.X"</li>
     <li>"X.X"</li>
@@ -29,12 +28,9 @@ major, minor, build, and revision values respectively.
     <li>"X.X-rX"</li>
     <li>"X.X.XrX"</li>
     <li>"X.X.X-rX"</li>
-  </ul>
 #### Version(array)
 creates a Version object by assigning the values in the array to their
 respective version types
 #####   Acceptable array parameter must
-  <ul>
     <li>consist of all integer values</li>
     <li>have a size of 4 or less</li>
-  </ul>

@@ -47,4 +47,29 @@
  - creates a Version object by assigning the values the parameters to their
  respective version types
  - order used: major, minor, build, revision
+ - all parameter values must be an integer or null
  - any missing values will be set to 0
+### Version(Version)
+ - creates a Version object with the same major, minor, build, and revision
+ values as the Version parameter passed to the constructor
+
+## Functions
+
+### getMajor()
+### getMinor()
+### getBuild()
+### getRevision()
+### setMajor()
+### setMinor()
+### setBuild()
+### setRevision()
+### isGreater()
+### isLess()
+### isEqual()
+### incrementMajor()
+### incrementMinor()
+### incrementBuild()
+### incrementRevision()
+### toString(format)
+### toRString()
+### toHyphenRString()

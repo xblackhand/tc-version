@@ -31,6 +31,7 @@ major, minor, build, and revision values respectively.
     <li>"X.X.X-rX"</li>
   </ul>
   where X is an integer and r is the character 'r'
+  <br/>
 #### Version(array)
 creates a Version object by assigning the values in the array to their
 respective version types

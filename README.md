@@ -1,27 +1,27 @@
-## Objective
+# Objective
  - Create an easy to use, lightweight Version class that can handle basic Version needs.
 
-## API
+# API
 
-### Member variables
+## Member variables
 
-#### major
+### major
  - integer value to represent the major version of the Version
-#### minor
+### minor
  - integer value to represent the minor version of the Version
-#### build
+### build
  - integer value to represent the build version of the Version
-#### revision
+### revision
  - integer value to represent the revision version of the Version
 
-### Constructors
+## Constructors
 
-#### Version()
+### Version()
  - creates a Version object with major, minor, build, and revision all set to 0
-#### Version(string)
+### Version(string)
  - creates a Version object by splitting the string on '.' and assigning the
- - major, minor, build, and revision values respectively.
-#####   Acceptable string parameter formats
+ major, minor, build, and revision values respectively.
+####   Acceptable string parameter formats
  - "X.X.X.X"
  - "X.X.X"
  - "X.X"
@@ -32,9 +32,9 @@
  - "X.X-rX"
  - "X.X.XrX"
  - "X.X.X-rX"
-#### Version(array)
+### Version(array)
  - creates a Version object by assigning the values in the array to their
  respective version types
-#####   Acceptable array parameter must
+####   Acceptable array parameter must
  - consist of all integer values
  - have a size of 4 or less

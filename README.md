@@ -23,7 +23,7 @@
  major, minor, build, and revision values respectively.
  - order used: major, minor, build, revision
  - any missing values will be set to 0
-####   Acceptable string parameter formats
+#####   Acceptable string parameter formats
  - "X.X.X.X"
  - "X.X.X"
  - "X.X"
@@ -40,7 +40,7 @@
  respective version types
  - order used: major, minor, build, revision
  - any missing values will be set to 0
-####   Acceptable array parameter must
+#####   Acceptable array parameter must
  - consist of all integer values
  - have a size of 4 or less
 ### Version(int, int, int, int)

@@ -21,6 +21,8 @@
 ### Version(string)
  - creates a Version object by splitting the string on '.' and assigning the
  major, minor, build, and revision values respectively.
+ - order used: major, minor, build, revision
+ - any missing values will be set to 0
 ####   Acceptable string parameter formats
  - "X.X.X.X"
  - "X.X.X"
@@ -32,9 +34,17 @@
  - "X.X-rX"
  - "X.X.XrX"
  - "X.X.X-rX"
+ where <i>X</i> is an integer and <i>r</i> is a the character 'r'
 ### Version(array)
  - creates a Version object by assigning the values in the array to their
  respective version types
+ - order used: major, minor, build, revision
+ - any missing values will be set to 0
 ####   Acceptable array parameter must
  - consist of all integer values
  - have a size of 4 or less
+### Version(int, int, int, int)
+ - creates a Version object by assigning the values the parameters to their
+ respective version types
+ - order used: major, minor, build, revision
+ - any missing values will be set to 0

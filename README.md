@@ -103,7 +103,7 @@ version comparisons and operations.
 ### void incrementRevision()
  - increments the Version object's revision value by 1
  - Version object's major, minor, and build version are not altered
-### string toString(string)
+### string toString()
  - returns the Version object in this string representation: <b>M.m.B.R</b>
    - M is the Version object's major version
    - m is the Version object's minor version

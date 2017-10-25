@@ -39,14 +39,7 @@ version comparisons and operations.
  - if there is a 'r' character in the string with not trailing integer, the
  revision value will be set to 1
 #####   Thrown Exceptions
-  - if the parameter has more than 3 '.'
-  - if any type of the parameter version is not a positive integer except the last version type can contain the character 'r'
-  - if the parameter has a 'r' suffix on the revision part of the parameter version
-    - Example: 1.2.3.4r4
-  - if the parameter has a 'r' suffix that is trailed by another version types
-    - Example: 1.2r4.3
-  - if the parameter has a 'r' suffix not proceeded by an integer in the same version type
-    - Example: 1.2.r4
+  - if the parameter is not one of the acceptable string formats
 ### Version(array)
  - creates a Version object by assigning the values in the array to their
  respective version types

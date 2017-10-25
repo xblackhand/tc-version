@@ -134,6 +134,8 @@ version comparisons and operations.
    - output: <i>1:2-4_2</i>
  - version.toString("Version: M.m.B.R-milestone");
    - output: <i>Version: 1.3.4.2-milestone</i>
+ - version.toString("");
+   - output: <i>1.3.4.2</i>
 ### string toRString()
  - returns the Version object in this string representation: <b>M.m.BrR</b>
    - M is the Version object's major version
@@ -152,5 +154,5 @@ version comparisons and operations.
    - R is the Version object's revision version
 #### Example
  - var version = new Version('1.3.4.2');
- - version.toRString();
+ - version.toHyphenRString();
    - output: <i>1.3.4-r2</i>

@@ -2,7 +2,7 @@
   "name": "tc-version",
   "version": "0.2.2",
   "description": "",
-  "main": "./src/Version.js",
+  "main": "./src/Version",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

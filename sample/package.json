@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tc-version": "^0.2.1"
+    "tc-version": "^0.2.3"
   }
 }

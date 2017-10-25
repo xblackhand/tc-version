@@ -103,7 +103,21 @@ version comparisons and operations.
 ### void incrementRevision()
  - increments the Version object's revision value by 1
  - Version object's major, minor, and build version are not altered
-### string toString(format)
+### string toString(string)
+ - returns the Version object in the string representation that the string
+ argument asks for
+ - characters used to format the output
+   - M is the Version object's major version
+   - m is the Version object's minor version
+   - B is the Version object's build version
+   - R is the Version object's revision version
+ - any other character will be left in the returned string
+#### Example
+ - var version = new Version('1.3.4.2');
+ - version.toString("M.m");
+   - output: <i>1.3</i>
+ - version.toString("M\:m\:B_R");
+   - output: <i>1\:2\:4_2</i>
 ### string toRString()
  - returns the Version object in this string representation: <b>M.m.BrR</b>
    - M is the Version object's major version
@@ -115,7 +129,7 @@ version comparisons and operations.
  - version.toRString();
    - output: <i>1.3.4r2</i>
 ### string toHyphenRString()
- - returns the Version object in this string representation: <b>M.m.B.-rR</b>
+ - returns the Version object in this string representation: <b>M.m.B-rR</b>
    - M is the Version object's major version
    - m is the Version object's minor version
    - B is the Version object's build version

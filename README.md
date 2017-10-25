@@ -105,10 +105,9 @@ version comparisons and operations.
  - Version object's major, minor, and build version are not altered
 ### string toString(format)
 ### string toRString()
- - returns the Version object in this string representation:
-   M.m.B.-rR
- - M is the Version object's major version
- - m is the Version object's minor version
- - B is the Version object's build version
- - R is the Version object's revision version
+ - returns the Version object in this string representation: <b>M.m.B.-rR</b>
+   - M is the Version object's major version
+   - m is the Version object's minor version
+   - B is the Version object's build version
+   - R is the Version object's revision version
 ### string toHyphenRString()

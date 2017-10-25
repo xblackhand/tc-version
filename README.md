@@ -118,6 +118,8 @@ version comparisons and operations.
    - output: <i>1.3</i>
  - version.toString("M:m-B_R");
    - output: <i>1:2-4_2</i>
+ - version.toString("Version: M.m.B.R-beta");
+   - output: <i>Version: 1.3.4.2-beta</i>
 ### string toRString()
  - returns the Version object in this string representation: <b>M.m.BrR</b>
    - M is the Version object's major version

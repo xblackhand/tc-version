@@ -1,5 +1,6 @@
 # Objective
- - Create an easy to use, lightweight Version class that can handle basic Version needs.
+To create an easy to use, lightweight Version class that can handle basic
+version comparisons and operations.
 
 # API
 
@@ -55,21 +56,53 @@
 
 ## Functions
 
-### getMajor()
-### getMinor()
-### getBuild()
-### getRevision()
-### setMajor()
-### setMinor()
-### setBuild()
-### setRevision()
-### isGreater()
-### isLess()
-### isEqual()
-### incrementMajor()
-### incrementMinor()
-### incrementBuild()
-### incrementRevision()
-### toString(format)
-### toRString()
-### toHyphenRString()
+### int getMajor()
+ - returns the major version of the Version object as an integer
+### int getMinor()
+ - returns the minor version of the Version object as an integer
+### int getBuild()
+ - returns the build version of the Version object as an integer
+### int getRevision()
+ - returns the revision version of the Version object as an integer
+### void setMajor(int)
+ - sets the major version of the Version object to the argument integer value
+ - argument must be an integer or null
+ - null argument value will be set to 0
+### void setMinor(int)
+ - sets the minor version of the Version object to the argument integer value
+ - argument must be an integer or null
+ - null argument value will be set to 0
+### void setBuild(int)
+ - sets the build version of the Version object to the argument integer value
+ - argument must be an integer or null
+ - null argument value will be set to 0
+### void setRevision(int)
+ - sets the revision version of the Version object to the argument integer value
+ - argument must be an integer or null
+ - null argument value will be set to 0
+### boolean isGreater(Version)
+ - returns a boolean value if the Version object has a greater version number
+ than the Version object argument
+### boolean isLess(Version)
+ - returns a boolean value if the Version object has a lesser version number
+ than the Version object argument
+### boolean isEqual(Version)
+ - returns a boolean value if the Version object has an equal version number
+ than the Version object argument
+### void incrementMajor()
+ - increments the Version object's major integer by 1 and sets the minor,
+ build, and revision values to 0
+### void incrementMinor()
+ - increments the Version object's minor integer by 1 and sets the build
+ and revision values to 0
+ - Version object's major version is not altered
+### void incrementBuild()
+ - increments the Version object's build integer by 1 and sets the revision
+ value to 0
+ - Version object's major and minor version are not altered
+### void incrementRevision()
+ - increments the Version object's revision integer by 1
+ - Version object's major, minor, and build version are not altered
+### string toString(format)
+### string toRString()
+### string toHyphenRString()

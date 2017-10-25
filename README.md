@@ -90,19 +90,25 @@ version comparisons and operations.
  - returns a boolean value if the Version object has an equal version number
  than the Version object argument
 ### void incrementMajor()
- - increments the Version object's major integer by 1 and sets the minor,
+ - increments the Version object's major value by 1 and sets the minor,
  build, and revision values to 0
 ### void incrementMinor()
- - increments the Version object's minor integer by 1 and sets the build
+ - increments the Version object's minor value by 1 and sets the build
  and revision values to 0
  - Version object's major version is not altered
 ### void incrementBuild()
- - increments the Version object's build integer by 1 and sets the revision
+ - increments the Version object's build value by 1 and sets the revision
  value to 0
  - Version object's major and minor version are not altered
 ### void incrementRevision()
- - increments the Version object's revision integer by 1
+ - increments the Version object's revision value by 1
  - Version object's major, minor, and build version are not altered
 ### string toString(format)
 ### string toRString()
+ - returns the Version object in this string representation:
+  - M.m.B.-rR
+   - M is the Version object's major version
+   - m is the Version object's minor version
+   - B is the Version object's build version
+   - R is the Version object's revision version
 ### string toHyphenRString()

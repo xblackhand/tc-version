@@ -1,4 +1,4 @@
-const Version = require('tc-version/src/Version');
+const Version = require('tc-version');
 
 var a = new Version("1.1.1-r");
 

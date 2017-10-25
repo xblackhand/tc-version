@@ -4,7 +4,7 @@
   "description": "",
   "main": "./src/Version",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "demo": "node ./sample/sample-main.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/xblackhand/tc-version/issues"
   },
-  "homepage": "https://github.com/xblackhand/tc-version#readme"
+  "homepage": "https://github.com/xblackhand/tc-version#readme",
+  "dependencies": {
+    "mocha": "^4.0.1"
+  }
 }

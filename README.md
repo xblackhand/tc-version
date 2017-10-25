@@ -125,6 +125,7 @@ version comparisons and operations.
    - R is the Version object's revision version
  - only the first of each of the format characters will used in the string
  - any other character will be left in the returned string
+ - if string argument is an empty string then the output will be the same as the toString() function
 #### Example
  - var version = new Version('1.3.4.2');
  - version.toString("M.m");

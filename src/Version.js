@@ -202,7 +202,7 @@ class Version {
   }
 
   setMajor(val) {
-    if (val && Number.isInteger(val)) {
+    if (Number.isInteger(val)) {
       this.major = val;
       return;
     }
@@ -210,7 +210,7 @@ class Version {
   }
 
   setMinor(val) {
-    if (val && Number.isInteger(val)) {
+    if (Number.isInteger(val)) {
       this.minor = val;
       return;
     }
@@ -218,7 +218,7 @@ class Version {
   }
 
   setBuild(val) {
-    if (val && Number.isInteger(val)) {
+    if (Number.isInteger(val)) {
       this.build = val;
       return;
     }
@@ -226,7 +226,7 @@ class Version {
   }
 
   setRevision(val) {
-    if (val && Number.isInteger(val)) {
+    if (Number.isInteger(val)) {
       this.revision = val;
       return;
     }
@@ -255,10 +255,12 @@ class Version {
   toString(regex) {
     //if string formatted input, replace 'M' for major, 'm' for minor, 'B' for
     //build, and 'R' for revision
-    if (regex) {
+    if (regex && typeof regex === 'string') {
       return regex.replace(/M/, this.major).replace(/m/, this.minor).replace(/B/, this.build).replace(/R/, this.revision);
+    } else if (regex == null || regex === '') {
+      return this.major + '.' + this.minor + '.' + this.build + '.' + this.revision;
     }
-    return this.major + '.' + this.minor + '.' + this.build + '.' + this.revision;
+    throw new Error('Invalid parameter passed into toString(). Parameter must be null or a string.');
   }
 
   toRString() {

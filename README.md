@@ -105,6 +105,16 @@ version comparisons and operations.
  - Version object's major, minor, and build version are not altered
 ### string toString(format)
 ### string toRString()
+ - returns the Version object in this string representation: <b>M.m.BrR</b>
+   - M is the Version object's major version
+   - m is the Version object's minor version
+   - B is the Version object's build version
+   - R is the Version object's revision version
+#### Example
+ - var version = new Version('1.3.4.2');
+ - version.toRString();
+   - output: <i>1.3.4r2</i>
+### string toHyphenRString()
  - returns the Version object in this string representation: <b>M.m.B.-rR</b>
    - M is the Version object's major version
    - m is the Version object's minor version
@@ -113,5 +123,4 @@ version comparisons and operations.
 #### Example
  - var version = new Version('1.3.4.2');
  - version.toRString();
-   - output: <i>1.2.4r2</i>
-### string toHyphenRString()
+   - output: <i>1.3.4-r2</i>

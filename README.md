@@ -110,4 +110,8 @@ version comparisons and operations.
    - m is the Version object's minor version
    - B is the Version object's build version
    - R is the Version object's revision version
+#### Example
+ - var version = new Version('1.3.4.2');
+ - version.toRString();
+   - output: <i>1.2.4r2</i>
 ### string toHyphenRString()

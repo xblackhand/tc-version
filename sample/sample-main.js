@@ -1,5 +1,5 @@
 const Version = require('../src/Version');
 
-var a = new Version();
+var a = new Version("1.1.1-r");
 
-console.log(a.toHyphenRString(true));
+console.log(a.toString("M.m.B.R-milestone"));

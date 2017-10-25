@@ -36,6 +36,8 @@ version comparisons and operations.
  - "X.X.XrX"
  - "X.X.X-rX"
  where <i>X</i> is an integer and <i>r</i> is a the character 'r'
+ - if there is a 'r' character in the string with not trailing integer, the
+ revision value will be set to 1
 ### Version(array)
  - creates a Version object by assigning the values in the array to their
  respective version types

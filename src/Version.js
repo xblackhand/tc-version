@@ -1,126 +1,129 @@
 class Version {
   constructor(major = null, minor = null, build = null, revision = null) {
+    var self = this;
     //array in arguments
     if (major instanceof Array && minor === null && build === null && revision === null) {
       //only allow 4 elements max in array
       if (major.length > 4) {
         throw new Error('To many elements in the Version constructor array parameter. Max of only 4 elements are allowed.')
       }
-      //ensure all elements are integers
+      //ensure all elements are positive integers
       major.forEach((element) => {
-        if (element != null && !Number.isInteger(element)) {
-          throw new Error('Invalid array elements in Version constructor array parameter. All elements must be integers.');
+        if (element != null && (!Number.isInteger(element) || element < 0)) {
+          throw new Error('Invalid array elements in Version constructor array parameter. All elements must be positive integers.');
         }
       });
-      this.arrayConstructor(major);
+      arrayConstructor(major);
       return;
     }
     //int list in arguments
-    if ((major === null || Number.isInteger(major)) && (minor === null || Number.isInteger(minor))
-        && (build === null || Number.isInteger(build)) && (revision === null || Number.isInteger(revision))) {
-      this.intListConstructor(major, minor, build, revision);
+    if ((major === null || (Number.isInteger(major) && major >= 0))
+      && (minor === null || (Number.isInteger(minor)) && minor >= 0)
+      && (build === null || (Number.isInteger(build)) && build >= 0)
+      && (revision === null || (Number.isInteger(revision)) && revision >= 0)) {
+      intListConstructor(major, minor, build, revision);
       return;
     //string in arguements
     } else if (typeof major === 'string' && minor === null && build === null && revision === null) {
-      this.stringConstructor(major);
+      stringConstructor(major);
       return;
     //Version in arguments
     } else if (major instanceof Version && minor === null && build === null && revision === null) {
-      this.copyConstructor(major);
+      copyConstructor(major);
       return;
     }
-    throw new Error('Invalid constructor parameters. Only a single string, an array of integers, or up to 4 comma separated integer arguments are allowed.');
-  }
+    throw new Error('Invalid constructor parameters. Only a single string in one of the accepted formats, an array of positive integers, or up to 4 comma separated positive integer arguments are allowed.');
 
-  arrayConstructor(versionArray) {
-    this.major = this.minor = this.build = this.revision = 0;
-    for (var i = 0; i < versionArray.length; i++) {
-      switch(i) {
-        case 0:
-          this.major = versionArray[i] || 0;
-          break;
-        case 1:
-          this.minor = versionArray[i] || 0;
-          break;
-        case 2:
-          this.build = versionArray[i] || 0;
-          break;
-        case 3:
-          this.revision = versionArray[i] || 0;
-          break;
+    function arrayConstructor(versionArray) {
+      self.major = self.minor = self.build = self.revision = 0;
+      for (var i = 0; i < versionArray.length; i++) {
+        switch(i) {
+          case 0:
+            self.major = versionArray[i] || 0;
+            break;
+          case 1:
+            self.minor = versionArray[i] || 0;
+            break;
+          case 2:
+            self.build = versionArray[i] || 0;
+            break;
+          case 3:
+            self.revision = versionArray[i] || 0;
+            break;
+        }
       }
     }
-  }
 
-  intListConstructor(major, minor, build, revision) {
-    this.major = major || 0;
-    this.minor = minor || 0;
-    this.build = build || 0;
-    this.revision = revision || 0;
-  }
-
-  stringConstructor(versionString) {
-    this.major = this.minor = this.build = this.revision = 0;
-    var array = versionString.split('.');
-
-    //format 'r' if it appears in the verison for revision
-   if (array.length === 3 && array[2].includes('-r') && array[2].indexOf('-r') > 0) {
-      var tempArray = array[2].split('-r');
-      array[2] = tempArray[0] || 0;
-      array[3] = tempArray[1];
-    } else if (array.length === 3 && array[2].includes('r') && array[2].indexOf('r') > 0) {
-      var tempArray = array[2].split('r');
-      array[2] = tempArray[0] || 0;
-      array[3] = tempArray[1];
-    } else if (array.length === 2 && array[1].includes('-r') && array[1].indexOf('-r') > 0) {
-      var tempArray = array[1].split('-r');
-      array[1] = tempArray[0] || 0;
-      array[3] = tempArray[1];
-    } else if (array.length === 2 && array[1].includes('r') && array[1].indexOf('r') > 0) {
-      var tempArray = array[1].split('r');
-      array[1] = tempArray[0] || 0;
-      array[3] = tempArray[1];
-    } else if (array.length === 1 && array[0].includes('-r') && array[0].indexOf('-r') > 0) {
-      var tempArray = array[0].split('-r');
-      array[0] = tempArray[0] || 0;
-      array[3] = tempArray[1];
-    } else if (array.length === 1 && array[0].includes('r') && array[0].indexOf('r') > 0) {
-      var tempArray = array[0].split('r');
-      array[0] = tempArray[0] || 0;
-      array[3] = tempArray[1];
+    function intListConstructor(major, minor, build, revision) {
+      self.major = major || 0;
+      self.minor = minor || 0;
+      self.build = build || 0;
+      self.revision = revision || 0;
     }
-    //catch arrays that exceed max length
-    if (array.length > 4) {
-      throw new Error('To many "." in the Version constructor string parameter. Max of only 3 "." are allowed.');
-    }
-    //catch arrays that have bad input
-    for (var i = 0; i < array.length; i++) {
-      //all elements but the 4th element, if there are 4
-      if (array[i] != null && !Number.isInteger(array[i] * 1)) {
-        throw new Error('Invalid array elements in Version constructor string parameter. All elements must be integers in standard version format. EX: 1.2.3.4 or 1.3 or 1.4.5r2');
+
+    function stringConstructor(versionString) {
+      self.major = self.minor = self.build = self.revision = 0;
+      var array = versionString.split('.');
+
+      //format 'r' if it appears in the verison for revision
+     if (array.length === 3 && array[2].includes('-r') && array[2].indexOf('-r') > 0) {
+        var tempArray = array[2].split('-r');
+        array[2] = tempArray[0] || 0;
+        array[3] = tempArray[1] || 1;
+      } else if (array.length === 3 && array[2].includes('r') && array[2].indexOf('r') > 0) {
+        var tempArray = array[2].split('r');
+        array[2] = tempArray[0] || 0;
+        array[3] = tempArray[1] || 1;
+      } else if (array.length === 2 && array[1].includes('-r') && array[1].indexOf('-r') > 0) {
+        var tempArray = array[1].split('-r');
+        array[1] = tempArray[0] || 0;
+        array[3] = tempArray[1] || 1;
+      } else if (array.length === 2 && array[1].includes('r') && array[1].indexOf('r') > 0) {
+        var tempArray = array[1].split('r');
+        array[1] = tempArray[0] || 0;
+        array[3] = tempArray[1] || 1;
+      } else if (array.length === 1 && array[0].includes('-r') && array[0].indexOf('-r') > 0) {
+        var tempArray = array[0].split('-r');
+        array[0] = tempArray[0] || 0;
+        array[3] = tempArray[1] || 1;
+      } else if (array.length === 1 && array[0].includes('r') && array[0].indexOf('r') > 0) {
+        var tempArray = array[0].split('r');
+        array[0] = tempArray[0] || 0;
+        array[3] = tempArray[1] || 1;
       }
-      switch(i) {
-        case 0:
-          this.major = array[i] * 1 || 0;
-          break;
-        case 1:
-          this.minor = array[i] * 1 || 0;
-          break;
-        case 2:
-          this.build = array[i] * 1 || 0;
-          break;
-        case 3:
-          this.revision = array[i] * 1 || 0;
-          break;
+      //catch arrays that exceed max length
+      if (array.length > 4) {
+        throw new Error('To many "." in the Version constructor string parameter. Max of only 3 "." are allowed.');
+      }
+      //catch arrays that have bad input
+      for (var i = 0; i < array.length; i++) {
+        //all elements but the 4th element, if there are 4
+        if (array[i] != null && (!Number.isInteger(array[i] * 1)) || array[i] < 0) {
+          throw new Error('Invalid array elements in Version constructor string parameter. All elements must be positive integers in a supported format.');
+        }
+        switch(i) {
+          case 0:
+            self.major = array[i] * 1 || 0;
+            break;
+          case 1:
+            self.minor = array[i] * 1 || 0;
+            break;
+          case 2:
+            self.build = array[i] * 1 || 0;
+            break;
+          case 3:
+            self.revision = array[i] * 1 || 0;
+            break;
+        }
       }
     }
-  }
 
-  copyConstructor(originalVersion) {
-    this.major = originalVersion.major;
-    this.minor = originalVersion.minor;
-    this.build = originalVersion.build;
-    this.revision = originalVersion.revision;
+    function copyConstructor(originalVersion) {
+      self.major = originalVersion.major;
+      self.minor = originalVersion.minor;
+      self.build = originalVersion.build;
+      self.revision = originalVersion.revision;
+    }
   }
 
   isGreater(comparableVersion) {
@@ -253,7 +256,7 @@ class Version {
     //if string formatted input, replace 'M' for major, 'm' for minor, 'B' for
     //build, and 'R' for revision
     if (regex) {
-      return regex.replace(/M/, this.major).replace(/m/, this.minor).replace(/b/, this.build).replace(/R/, this.revision);
+      return regex.replace(/M/, this.major).replace(/m/, this.minor).replace(/B/, this.build).replace(/R/, this.revision);
     }
     return this.major + '.' + this.minor + '.' + this.build + '.' + this.revision;
   }

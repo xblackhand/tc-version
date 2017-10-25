@@ -36,6 +36,43 @@ describe('Version constructors', () => {
   it('Version d toString equal to "2.3.0.3"', () => {
     assert.equal(d, '2.3.0.3');
   });
+  /// EXCEPTIONS TESTING
+  it('Version constructor argument [1,1,1,1,1] should throw an exception.', () => {
+    assert.throws(() => new Version([1,1,1,1,1]), Error);
+  });
+  it('Version constructor argument [1,1,\'a\',1] should throw an exception.', () => {
+    assert.throws(() => new Version([1,1,'a',1]), Error);
+  });
+  it('Version constructor argument [1,1,-1,1] should throw an exception.', () => {
+    assert.throws(() => new Version([1,1,-1,1]), Error);
+  });
+  it('Version constructor argument [1,1,1.1,1] should throw an exception.', () => {
+    assert.throws(() => new Version([1,1,1.1,1]), Error);
+  });
+  it('Version constructor arguments 1,1,-1 should throw an exception.', () => {
+    assert.throws(() => new Version(1,1,-1), Error);
+  });
+  it('Version constructor arguments 1,1,1.1 should throw an exception.', () => {
+    assert.throws(() => new Version(1,1,1.1), Error);
+  });
+  it('Version constructor arguments 1,1,1,\'a\' should throw an exception.', () => {
+    assert.throws(() => new Version(1,1,1,'a'), Error);
+  });
+  it('Version constructor arguments \'1.3.r4\' should throw an exception.', () => {
+    assert.throws(() => new Version('1.3.r4'), Error);
+  });
+  it('Version constructor arguments \'1.3.0.0r4\' should throw an exception.', () => {
+    assert.throws(() => new Version('1.3.0.0r4'), Error);
+  });
+  it('Version constructor arguments \'1.-3r4\' should throw an exception.', () => {
+    assert.throws(() => new Version('1.-3r4'), Error);
+  });
+  it('Version constructor arguments \'1.-3.0\' should throw an exception.', () => {
+    assert.throws(() => new Version('1.-3.0'), Error);
+  });
+  it('Version constructor arguments \'1.3.0.0.0\' should throw an exception.', () => {
+    assert.throws(() => new Version('1.3.0.0.0'), Error);
+  });
 });
 
 describe('Version setters and getters', () => {
@@ -66,6 +103,55 @@ describe('Version setters and getters', () => {
   it('Version d build changed to 13 with setBuild, and toString should equal to "2.3.13.0"', () => {
     d.setBuild(13);
     assert.equal(d.toString(), '2.3.13.0');
+  });
+  /// EXCEPTIONS TESTING
+  it('Version setMajor argument null should throw an exception.', () => {
+    assert.throws(() => a.setMajor(), Error);
+  });
+  it('Version setMajor argument \'a\' should throw an exception.', () => {
+    assert.throws(() => a.setMajor('a'), Error);
+  });
+  it('Version setMajor argument -1 should throw an exception.', () => {
+    assert.throws(() => a.setMajor(-1), Error);
+  });
+  it('Version setMajor argument 1.1 should throw an exception.', () => {
+    assert.throws(() => a.setMajor(1.1), Error);
+  });
+  it('Version setMinor argument null should throw an exception.', () => {
+    assert.throws(() => a.setMinor(), Error);
+  });
+  it('Version setMinor argument \'a\' should throw an exception.', () => {
+    assert.throws(() => a.setMinor('a'), Error);
+  });
+  it('Version setMinor argument -1 should throw an exception.', () => {
+    assert.throws(() => a.setMinor(-1), Error);
+  });
+  it('Version setMinor argument 1.1 should throw an exception.', () => {
+    assert.throws(() => a.setMinor(1.1), Error);
+  });
+  it('Version setBuild argument null should throw an exception.', () => {
+    assert.throws(() => a.setBuild(), Error);
+  });
+  it('Version setBuild argument \'a\' should throw an exception.', () => {
+    assert.throws(() => a.setBuild('a'), Error);
+  });
+  it('Version setBuild argument -1 should throw an exception.', () => {
+    assert.throws(() => a.setBuild(-1), Error);
+  });
+  it('Version setBuild argument 1.1 should throw an exception.', () => {
+    assert.throws(() => a.setBuild(1.1), Error);
+  });
+  it('Version setRevision argument null should throw an exception.', () => {
+    assert.throws(() => a.setRevision(), Error);
+  });
+  it('Version setRevision argument \'a\' should throw an exception.', () => {
+    assert.throws(() => a.setRevision('a'), Error);
+  });
+  it('Version setRevision argument -1 should throw an exception.', () => {
+    assert.throws(() => a.setRevision(-1), Error);
+  });
+  it('Version setRevision argument 1.1 should throw an exception.', () => {
+    assert.throws(() => a.setRevision(1.1), Error);
   });
 });
 
@@ -98,6 +184,52 @@ describe('Version comparisons', () => {
   it('Version a isEqual to Version d should be false', () => {
     assert.equal(a.isEqual(d), false);
   });
+  /// EXCEPTIONS TESTING
+  it('Version isGreater argument null should throw an exception.', () => {
+    assert.throws(() => a.isGreater(), Error);
+  });
+  it('Version isGreater argument \'1.1.1\' should throw an exception.', () => {
+    assert.throws(() => a.isGreater('1.1.1.'), Error);
+  });
+  it('Version isGreater argument [1,1,1] should throw an exception.', () => {
+    assert.throws(() => a.isGreater([1,1,1]), Error);
+  });
+  it('Version isGreater argument 1.2 should throw an exception.', () => {
+    assert.throws(() => a.isGreater(1.2), Error);
+  });
+  it('Version isGreater argument 1 should throw an exception.', () => {
+    assert.throws(() => a.isGreater(1), Error);
+  });
+  it('Version isLess argument null should throw an exception.', () => {
+    assert.throws(() => a.isLess(), Error);
+  });
+  it('Version isLess argument \'1.1.1\' should throw an exception.', () => {
+    assert.throws(() => a.isLess('1.1.1.'), Error);
+  });
+  it('Version isLess argument [1,1,1] should throw an exception.', () => {
+    assert.throws(() => a.isLess([1,1,1]), Error);
+  });
+  it('Version isLess argument 1.2 should throw an exception.', () => {
+    assert.throws(() => a.isLess(1.2), Error);
+  });
+  it('Version isLess argument 1 should throw an exception.', () => {
+    assert.throws(() => a.isLess(1), Error);
+  });
+  it('Version isEqual argument null should throw an exception.', () => {
+    assert.throws(() => a.isEqual(), Error);
+  });
+  it('Version isEqual argument \'1.1.1\' should throw an exception.', () => {
+    assert.throws(() => a.isEqual('1.1.1.'), Error);
+  });
+  it('Version isEqual argument [1,1,1] should throw an exception.', () => {
+    assert.throws(() => a.isEqual([1,1,1]), Error);
+  });
+  it('Version isEqual argument 1.2 should throw an exception.', () => {
+    assert.throws(() => a.isEqual(1.2), Error);
+  });
+  it('Version isEqual argument 1 should throw an exception.', () => {
+    assert.throws(() => a.isEqual(1), Error);
+  });
 });
 
 describe('Version toString formatters', () => {
@@ -121,5 +253,12 @@ describe('Version toString formatters', () => {
   });
   it('Version c toString("") should be "1.3.0.0"', () => {
     assert.equal(c.toString(''), '1.3.0.0');
+  });
+  /// EXCEPTIONS TESTING
+  it('Version toString argument 1 should throw an exception.', () => {
+    assert.throws(() => a.toString(1), Error);
+  });
+  it('Version toString argument [\'M\',\'m\'] should throw an exception.', () => {
+    assert.throws(() => a.toString(['M', 'm']), Error);
   });
 });

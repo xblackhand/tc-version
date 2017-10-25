@@ -4,7 +4,8 @@
   "description": "",
   "main": "./src/Version",
   "scripts": {
-    "demo": "node ./sample/sample-main.js"
+    "demo": "node ./sample/sample-main.js",
+    "test": "mocha ./tests/*"
   },
   "repository": {
     "type": "git",

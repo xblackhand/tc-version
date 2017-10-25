@@ -127,62 +127,71 @@ class Version {
   }
 
   isGreater(comparableVersion) {
-    if (this.major > comparableVersion.major) {
-      return true;
-    } else if (this.major < comparableVersion.major) {
-      return false;
-    } else {
-      if (this.minor > comparableVersion.minor) {
+    if (comparableVersion instanceof Version) {
+      if (this.major > comparableVersion.major) {
         return true;
-      } else if (this.minor < comparableVersion.minor) {
+      } else if (this.major < comparableVersion.major) {
         return false;
       } else {
-        if (this.build > comparableVersion.build) {
+        if (this.minor > comparableVersion.minor) {
           return true;
-        } else if (this.build < comparableVersion.build) {
+        } else if (this.minor < comparableVersion.minor) {
           return false;
         } else {
-          if (this.revision > comparableVersion.revision) {
+          if (this.build > comparableVersion.build) {
             return true;
-          } else if (this.revision < comparableVersion.revision) {
+          } else if (this.build < comparableVersion.build) {
+            return false;
+          } else {
+            if (this.revision > comparableVersion.revision) {
+              return true;
+            } else if (this.revision < comparableVersion.revision) {
+              return false;
+            }
             return false;
           }
-          return false;
         }
       }
     }
+    throw new Error('Invalid parameter passed to isGreater(). Parameter must be a Version object.');
   }
 
   isLess(comparableVersion) {
-    if (this.major > comparableVersion.major) {
-      return false;
-    } else if (this.major < comparableVersion.major) {
-      return true;
-    } else {
-      if (this.minor > comparableVersion.minor) {
+    if (comparableVersion instanceof Version) {
+      if (this.major > comparableVersion.major) {
         return false;
-      } else if (this.minor < comparableVersion.minor) {
+      } else if (this.major < comparableVersion.major) {
         return true;
       } else {
-        if (this.build > comparableVersion.build) {
+        if (this.minor > comparableVersion.minor) {
           return false;
-        } else if (this.build < comparableVersion.build) {
+        } else if (this.minor < comparableVersion.minor) {
           return true;
         } else {
-          if (this.revision > comparableVersion.revision) {
+          if (this.build > comparableVersion.build) {
             return false;
-          } else if (this.revision < comparableVersion.revision) {
+          } else if (this.build < comparableVersion.build) {
             return true;
+          } else {
+            if (this.revision > comparableVersion.revision) {
+              return false;
+            } else if (this.revision < comparableVersion.revision) {
+              return true;
+            }
+            return false;
           }
-          return false;
         }
       }
     }
+    throw new Error('Invalid parameter passed to isGreater(). Parameter must be a Version object.');
   }
 
   isEqual(comparableVersion) {
-    return (this.major === comparableVersion.major && this.minor === comparableVersion.minor
-      && this.build === comparableVersion.build && this.revision === comparableVersion.revision);
+    if (comparableVersion instanceof Version) {
+      return (this.major === comparableVersion.major && this.minor === comparableVersion.minor
+        && this.build === comparableVersion.build && this.revision === comparableVersion.revision);
+    }
+    throw new Error('Invalid parameter passed to isGreater(). Parameter must be a Version object.');
   }
 
   getMajor() {
@@ -202,7 +211,7 @@ class Version {
   }
 
   setMajor(val) {
-    if (Number.isInteger(val)) {
+    if (Number.isInteger(val) && val >= 0) {
       this.major = val;
       return;
     }
@@ -210,7 +219,7 @@ class Version {
   }
 
   setMinor(val) {
-    if (Number.isInteger(val)) {
+    if (Number.isInteger(val) && val >= 0) {
       this.minor = val;
       return;
     }
@@ -218,7 +227,7 @@ class Version {
   }
 
   setBuild(val) {
-    if (Number.isInteger(val)) {
+    if (Number.isInteger(val) && val >= 0) {
       this.build = val;
       return;
     }
@@ -226,7 +235,7 @@ class Version {
   }
 
   setRevision(val) {
-    if (Number.isInteger(val)) {
+    if (Number.isInteger(val) && val >= 0) {
       this.revision = val;
       return;
     }

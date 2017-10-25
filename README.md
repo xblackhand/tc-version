@@ -2,6 +2,10 @@
 To create an easy to use, lightweight Version class that can handle basic
 version comparisons and operations.
 
+# Scripts
+ - `npm run demo` will run the sample main javascript file
+ - `npm run test` will run the mocha unit tests on the /tests folder
+
 # API
 
 ## Member variables

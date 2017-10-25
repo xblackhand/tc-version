@@ -114,7 +114,7 @@ version comparisons and operations.
  - any other character will be left in the returned string
 #### Example
  - var version = new Version('1.3.4.2');
- - version.toString("M.m");
+ - version.toString("M\.m");
    - output: <i>1.3</i>
  - version.toString("M\:m\:B_R");
    - output: <i>1\:2\:4_2</i>

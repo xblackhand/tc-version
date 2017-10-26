@@ -1,7 +1,7 @@
 {
   "name": "tc-version",
-  "version": "0.3.0",
-  "description": "",
+  "version": "0.3.1",
+  "description": "Version object package",
   "main": "./src/Version",
   "scripts": {
     "demo": "node ./sample/sample-main.js",
@@ -11,7 +11,11 @@
     "type": "git",
     "url": "git+https://github.com/xblackhand/tc-version.git"
   },
-  "author": "Travis Wayne Cook",
+  "author": {
+    "name": "Travis Wayne Cook",
+    "email": "traviswaynecook@gmail.com",
+    "url": "https://www.linkedin.com/in/travis-cook-2b5546117/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xblackhand/tc-version/issues"

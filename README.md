@@ -23,11 +23,22 @@ version comparisons and operations.
 
 ### Version()
  - creates a Version object with major, minor, build, and revision all set to 0
+#### Example
+ - var a = new Version();
+ - console.log(a);
+   - output: <i>{ major: 0, minor: 0, build: 0, revision: 0 }</i>
 ### Version(string)
  - creates a Version object by splitting the string on '.' and assigning the
  major, minor, build, and revision values respectively.
  - order used: major, minor, build, revision
  - any missing values will be set to 0
+#### Example
+ - var a = new Version('1.3r5');
+ - console.log(a);
+   - output: <i>{ major: 1, minor: 3, build: 0, revision: 5 }</i>
+ - var b = new Version('1.4.5-r2');
+ - console.log(b);
+   - output: <i>{ major: 1, minor: 4, build: 5, revision: 2 }</i>
 #####   Acceptable string parameter formats
  - "X.X.X.X"
  - "X.X.X"
@@ -49,6 +60,10 @@ version comparisons and operations.
  respective version types
  - order used: major, minor, build, revision
  - any missing values will be set to 0
+#### Example
+ - var a = new Version([1,2]);
+ - console.log(a);
+   - output: <i>{ major: 1, minor: 2, build: 0, revision: 0 }</i>
 #####   Acceptable array parameter must
  - consist of all integer values
  - have a size of 4 or less
@@ -62,6 +77,10 @@ version comparisons and operations.
  - all parameter values must be an integer or null
  - any missing values will be set to 0
  - only the first four parameters are used, any more will be ignored
+#### Example
+ - var a = new Version(1,3,2);
+ - console.log(a);
+   - output: <i>{ major: 1, minor: 3, build: 2, revision: 0 }</i>
 #####   Thrown Exceptions
  - if any other parameters are not positive integers or are not null
 ### Version(Version)
@@ -81,37 +100,37 @@ version comparisons and operations.
 ### void setMajor(int)
  - sets the major version of the Version object to the argument integer value
  - argument must be a positive integer
-#####   Thrown Exceptions
+##### Thrown Exceptions
  - if the parameter is not a positive integer
 ### void setMinor(int)
  - sets the minor version of the Version object to the argument integer value
  - argument must be a positive integer
-#####   Thrown Exceptions
+##### Thrown Exceptions
  - if the parameter is not a positive integer
 ### void setBuild(int)
  - sets the build version of the Version object to the argument integer value
  - argument must be a positive integer
-#####   Thrown Exceptions
+##### Thrown Exceptions
  - if the parameter is not a positive integer
 ### void setRevision(int)
  - sets the revision version of the Version object to the argument integer value
  - argument must be a positive integer
-#####   Thrown Exceptions
+##### Thrown Exceptions
  - if the parameter is not a positive integer
 ### boolean isGreater(Version)
  - returns a boolean value if the Version object has a greater version number
  than the Version object argument
-#####   Thrown Exceptions
+##### Thrown Exceptions
  - if the parameter is not a Version object
 ### boolean isLess(Version)
  - returns a boolean value if the Version object has a lesser version number
  than the Version object argument
-#####   Thrown Exceptions
+##### Thrown Exceptions
  - if the parameter is not a Version object
 ### boolean isEqual(Version)
  - returns a boolean value if the Version object has an equal version number
  than the Version object argument
-#####   Thrown Exceptions
+##### Thrown Exceptions
  - if the parameter is not a Version object
 ### void incrementMajor()
  - increments the Version object's major value by 1 and sets the minor,
@@ -180,3 +199,13 @@ version comparisons and operations.
  - var version = new Version('1.3.4.2');
  - version.toHyphenRString();
    - output: <i>1.3.4-r2</i>
+### int[] toArray()
+ - returns an integer array of size 4 in this order: <b>[M, m, B, R]</b>
+   - M is the Version object's major version
+   - m is the Version object's minor version
+   - B is the Version object's build version
+   - R is the Version object's revision version
+#### Example
+ - var version = new Version('1.4.4.0');
+ - version.toArray();
+   - output: <i>[1, 4, 4, 0]</i>

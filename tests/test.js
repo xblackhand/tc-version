@@ -232,7 +232,7 @@ describe('Version comparisons', () => {
   });
 });
 
-describe('Version toString formatters', () => {
+describe('Convert from Version functions', () => {
   it('Version a toString should be "4.0.0.0"', () => {
     assert.equal(a.toString(), '4.0.0.0');
   });
@@ -254,6 +254,9 @@ describe('Version toString formatters', () => {
   it('Version c toString("") should be "1.3.0.0"', () => {
     assert.equal(c.toString(''), '1.3.0.0');
   });
+  it('Version d toArray() should be [2,3,13,1]', () => {
+    assert.deepEqual(d.toArray(), [2,3,13,1]);
+  })
   /// EXCEPTIONS TESTING
   it('Version toString argument 1 should throw an exception.', () => {
     assert.throws(() => a.toString(1), Error);

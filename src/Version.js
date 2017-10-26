@@ -279,6 +279,10 @@ class Version {
   toHyphenRString() {
     return this.major + '.' + this.minor + '.' + this.build + '-r' + this.revision;
   }
+
+  toArray() {
+    return [this.major, this.minor, this.build, this.revision];
+  }
 }
 
 module.exports = Version;

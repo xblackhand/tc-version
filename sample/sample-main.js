@@ -34,5 +34,3 @@ console.log('1.3.3.3 > 1.2.5.6: ' + aVersion.isGreater(bVersion));
 //1.3.3.3 > 1.2.5.6 -> true
 console.log('1.2.5.6 < 0.1.0.0: ' + bVersion.isLess(cVersion));
 //1.2.5.6 < 0.1.0.0 -> false
-
-aVersion.toString(1);

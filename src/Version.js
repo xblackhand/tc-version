@@ -10,7 +10,7 @@ class Version {
       //ensure all elements are positive integers
       major.forEach((element) => {
         if (element != null && (!Number.isInteger(element) || element < 0)) {
-          throw new Error('Invalid array elements in Version constructor array parameter. All elements must be positive integers.');
+          throw new Error('Invalid array elements in Version constructor array parameter. All elements must be positive integers or null.');
         }
       });
       arrayConstructor(major);
@@ -65,8 +65,12 @@ class Version {
       self.major = self.minor = self.build = self.revision = 0;
       var array = versionString.split('.');
 
+      //catch arrays that exceed max length
+      if (array.length > 4) {
+        throw new Error('To many "." in the Version constructor string parameter. Max of only 3 "." are allowed.');
+      }
       //format 'r' if it appears in the verison for revision
-     if (array.length === 3 && array[2].includes('-r') && array[2].indexOf('-r') > 0) {
+      if (array.length === 3 && array[2].includes('-r') && array[2].indexOf('-r') > 0) {
         var tempArray = array[2].split('-r');
         array[2] = tempArray[0] || 0;
         array[3] = tempArray[1] || 1;
@@ -90,10 +94,6 @@ class Version {
         var tempArray = array[0].split('r');
         array[0] = tempArray[0] || 0;
         array[3] = tempArray[1] || 1;
-      }
-      //catch arrays that exceed max length
-      if (array.length > 4) {
-        throw new Error('To many "." in the Version constructor string parameter. Max of only 3 "." are allowed.');
       }
       //catch arrays that have bad input
       for (var i = 0; i < array.length; i++) {
@@ -192,6 +192,36 @@ class Version {
         && this.build === comparableVersion.build && this.revision === comparableVersion.revision);
     }
     throw new Error('Invalid parameter passed to isGreater(). Parameter must be a Version object.');
+  }
+
+  compare(comparableVersion) {
+    if (comparableVersion instanceof Version) {
+      if (this.major > comparableVersion.major) {
+        return 1;
+      } else if (this.major < comparableVersion.major) {
+        return -1;
+      } else {
+        if (this.minor > comparableVersion.minor) {
+          return 1;
+        } else if (this.minor < comparableVersion.minor) {
+          return -1;
+        } else {
+          if (this.build > comparableVersion.build) {
+            return 1;
+          } else if (this.build < comparableVersion.build) {
+            return -1;
+          } else {
+            if (this.revision > comparableVersion.revision) {
+              return 1;
+            } else if (this.revision < comparableVersion.revision) {
+              return -1;
+            }
+            return 0;
+          }
+        }
+      }
+    }
+    throw new Error('Invalid parameter passed to compare(). Parameter must be a Version object.');
   }
 
   getMajor() {

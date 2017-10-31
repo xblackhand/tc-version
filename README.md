@@ -11,13 +11,13 @@ version comparisons and operations.
 ## Member variables
 
 ### major
- - integer value to represent the major version of the Version
+ - positive integer value to represent the major version of the Version
 ### minor
- - integer value to represent the minor version of the Version
+ - positive integer value to represent the minor version of the Version
 ### build
- - integer value to represent the build version of the Version
+ - positive integer value to represent the build version of the Version
 ### revision
- - integer value to represent the revision version of the Version
+ - positive integer value to represent the revision version of the Version
 
 ## Constructors
 
@@ -31,6 +31,7 @@ version comparisons and operations.
  - creates a Version object by splitting the string on '.' and assigning the
  major, minor, build, and revision values respectively.
  - order used: major, minor, build, revision
+ - all version numbers in the string must be positive integers
  - any missing values will be set to 0
 #### Example
  - var a = new Version('1.3r5');
@@ -50,7 +51,7 @@ version comparisons and operations.
  - "X.X-rX"
  - "X.X.XrX"
  - "X.X.X-rX"
- where <i>X</i> is an integer and <i>r</i> is a the character 'r'
+ where <i>X</i> is a positive integer and <i>r</i> is a the character 'r'
  - if there is a 'r' character in the string with not trailing integer, the
  revision value will be set to 1
 #####   Thrown Exceptions
@@ -65,7 +66,7 @@ version comparisons and operations.
  - console.log(a);
    - output: <i>{ major: 1, minor: 2, build: 0, revision: 0 }</i>
 #####   Acceptable array parameter must
- - consist of all integer values
+ - consist of all positive integer or null values
  - have a size of 4 or less
 #####   Thrown Exceptions
  - if the parameter has a length greater than 4
@@ -74,7 +75,7 @@ version comparisons and operations.
  - creates a Version object by assigning the values the parameters to their
  respective version types
  - order used: major, minor, build, revision
- - all parameter values must be an integer or null
+ - all parameter values must be a positive integer or null
  - any missing values will be set to 0
  - only the first four parameters are used, any more will be ignored
 #### Example
@@ -130,6 +131,21 @@ version comparisons and operations.
 ### boolean isEqual(Version)
  - returns a boolean value if the Version object has an equal version number
  than the Version object argument
+##### Thrown Exceptions
+ - if the parameter is not a Version object
+### boolean compare(Version)
+ - returns an integer value to signify if the Version object version is greater,
+ less, or equal to the Version argument's version
+#### Example
+ - var a = new Version('1.0.0.0');
+ - var b = new Version(1,2,3);
+ - var c = new Version([1]);
+ - console.log(a.compare(b));
+   - output: -1
+ - console.log(b.compare(c));
+   - output: 1
+ - console.log(c.compare(a));
+   - output: 0
 ##### Thrown Exceptions
  - if the parameter is not a Version object
 ### void incrementMajor()

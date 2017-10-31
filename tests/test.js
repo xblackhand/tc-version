@@ -184,6 +184,15 @@ describe('Version comparisons', () => {
   it('Version a isEqual to Version d should be false', () => {
     assert.equal(a.isEqual(d), false);
   });
+  it('Version a compare to Version b should be 1', () => {
+    assert.equal(a.compare(b), 1);
+  });
+  it('Version b compare to Version a should be -1', () => {
+    assert.equal(b.compare(a), -1);
+  });
+  it('Version a compare to Version a should be 0', () => {
+    assert.equal(a.compare(a), 0);
+  });
   /// EXCEPTIONS TESTING
   it('Version isGreater argument null should throw an exception.', () => {
     assert.throws(() => a.isGreater(), Error);
@@ -229,6 +238,21 @@ describe('Version comparisons', () => {
   });
   it('Version isEqual argument 1 should throw an exception.', () => {
     assert.throws(() => a.isEqual(1), Error);
+  });
+  it('Version compare argument null should throw an exception.', () => {
+    assert.throws(() => a.compare(), Error);
+  });
+  it('Version compare argument \'1.1.1\' should throw an exception.', () => {
+    assert.throws(() => a.compare('1.1.1.'), Error);
+  });
+  it('Version compare argument [1,1,1] should throw an exception.', () => {
+    assert.throws(() => a.compare([1,1,1]), Error);
+  });
+  it('Version compare argument 1.2 should throw an exception.', () => {
+    assert.throws(() => a.compare(1.2), Error);
+  });
+  it('Version compare argument 1 should throw an exception.', () => {
+    assert.throws(() => a.compare(1), Error);
   });
 });
 

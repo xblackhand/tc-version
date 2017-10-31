@@ -133,7 +133,7 @@ version comparisons and operations.
  than the Version object argument
 ##### Thrown Exceptions
  - if the parameter is not a Version object
-### boolean compare(Version)
+### int compare(Version)
  - returns an integer value to signify if the Version object version is greater,
  less, or equal to the Version argument's version
 #### Example

@@ -51,16 +51,18 @@ version comparisons and operations.
  - "X.X-rX"
  - "X.X.XrX"
  - "X.X.X-rX"
- where <i>X</i> is a positive integer and <i>r</i> is a the character 'r'
+ where <i>X</i> is a positive integer and <i>r</i> is the character 'r'
  - if there is a 'r' character in the string with not trailing integer, the
  revision value will be set to 1
 #####   Thrown Exceptions
   - if the parameter is not one of the acceptable string formats
+  - if a value in the string is not a positive integer excluding the 'r' or '-r'
 ### Version(array)
  - creates a Version object by assigning the values in the array to their
  respective version types
  - order used: major, minor, build, revision
- - any missing values will be set to 0
+ - all array values must be a positive integer or null
+ - any missing or null values will be set to 0
 #### Example
  - var a = new Version([1,2]);
  - console.log(a);
@@ -70,13 +72,13 @@ version comparisons and operations.
  - have a size of 4 or less
 #####   Thrown Exceptions
  - if the parameter has a length greater than 4
- - if any of the parameter values are not positive integers or are not null
+ - if any of the parameter values are not positive integers or null
 ### Version(int, int, int, int)
  - creates a Version object by assigning the values the parameters to their
  respective version types
  - order used: major, minor, build, revision
  - all parameter values must be a positive integer or null
- - any missing values will be set to 0
+ - any missing or null values will be set to 0
  - only the first four parameters are used, any more will be ignored
 #### Example
  - var a = new Version(1,3,2);
@@ -136,6 +138,10 @@ version comparisons and operations.
 ### int compare(Version)
  - returns an integer value to signify if the Version object version is greater,
  less, or equal to the Version argument's version
+ - outputs:
+   - if the Version object version is greater than the Version argument's version: 1
+   - if the Version object version is equal to the Version argument's version: 0
+   - if the Version object version is less than the Version argument's version: -1
 #### Example
  - var a = new Version('1.0.0.0');
  - var b = new Version(1,2,3);

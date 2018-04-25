@@ -176,7 +176,7 @@ version comparisons and operations.
    - R is the Version object's revision version
 #### Example
  - var version = new Version('1.3.4.r2');
- - version.toRString();
+ - version.toString();
    - output: <i>1.3.4.2</i>
 ### string toString(string)
  - returns the Version object in the string representation that the string
